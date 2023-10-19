@@ -21,10 +21,12 @@ export class BookFormComponent {
     this.bookForm = this.fb.group({
       name: ['', Validators.required],
       price: [0, [Validators.required, Validators.min(0)]],
+      pages: [0, [Validators.required, Validators.min(0)]],
       author: ['', Validators.required],
       date: ['', Validators.required],
       genre: ['', Validators.required],
       language: ['', Validators.required],
+      description: ['', Validators.required],
     });
   }
 

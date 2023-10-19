@@ -31,6 +31,8 @@ export class BookService {
         date: '2023-10-20',
         genre: 'Fiction',
         language: 'Russian',
+        description: 'Классная Книга',
+        pages: 222
       },
       {
         name: 'Book 2',
@@ -39,6 +41,8 @@ export class BookService {
         date: '2023-10-21',
         genre: 'Science Fiction',
         language: 'Russian',
+        description: 'Cупер Книга',
+        pages: 223
       },
     ];
     dummyBooks.forEach((book) => {
