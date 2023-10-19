@@ -22,6 +22,7 @@ export class BookService {
     this.booksSubject.next([...this.books]);
   }
 
+  //test value
   private addDummyBooks(): void {
     const dummyBooks: Book[] = [
       {

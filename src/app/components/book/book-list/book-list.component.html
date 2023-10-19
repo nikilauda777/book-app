@@ -1,7 +1,6 @@
 <div class="container">
   <h2>Book List</h2>
   <input type="text" [(ngModel)]="filterText" placeholder="Search by book name" (input)="filterBooks()">
-
   <div *ngFor="let book of books" class="book-item" (click)="openBookPreview(book)">
     <p><strong>Name:</strong> {{ book.name }}</p>
     <p><strong>Price:</strong> {{ book.price | currency}}</p>
@@ -11,5 +10,15 @@
     <p><strong>Language:</strong> {{ book.language }}</p>
   </div>
   <button mat-raised-button color="black" (click)="navigateToAddBook()">Add Book</button>
+
+  <!-- Add a button to open the author input form -->
+  <button mat-raised-button color="primary" (click)="openAuthorInputForm()">Add Author</button>
+
+  <!-- Author input form (displayed conditionally) -->
+  <div *ngIf="addingAuthor" class="author-input-form">
+    <textarea [(ngModel)]="newAuthor" placeholder="Enter author name"></textarea>
+    <button mat-raised-button color="primary" (click)="addAuthor()">Submit</button>
+    <button mat-raised-button color="warn" (click)="closeAuthorInputForm()">Cancel</button>
+  </div>
 </div>
 <app-book-preview *ngIf="isPreviewOpen" [book]="selectedBook" (close)="closeBookPreview()"></app-book-preview>

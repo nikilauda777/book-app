@@ -11,4 +11,8 @@ export class AuthorService {
   getAuthors(): Observable<string[]> {
     return this.authorsSubject.asObservable();
   }
+  addAuthor(newAuthor: string): void {
+    this.authors.push(newAuthor);
+    this.authorsSubject.next([...this.authors]);
+  }
 }
