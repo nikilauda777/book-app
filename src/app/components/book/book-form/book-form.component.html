@@ -1,1 +1,28 @@
-<p>book-form works!</p>
+<h2>Add New Book</h2>
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" required />
+  </div>
+  <div>
+    <label for="price">Price:</label>
+    <input type="number" id="price" formControlName="price" required />
+  </div>
+  <div>
+    <label for="author">Author:</label>
+    <input type="text" id="author" formControlName="author" required />
+  </div>
+  <div>
+    <label for="date">Date:</label>
+    <input type="text" id="date" formControlName="date" required />
+  </div>
+  <div>
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" formControlName="genre" required />
+  </div>
+  <div>
+    <label for="language">Language:</label>
+    <input type="text" id="language" formControlName="language" required />
+  </div>
+  <button type="submit" [disabled]="bookForm.invalid">Add Book</button>
+</form>
