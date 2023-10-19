@@ -10,6 +10,8 @@ import {Router} from "@angular/router";
 })
 export class BookListComponent implements OnInit {
   books: Book[] = [];
+  isPreviewOpen = false;
+  selectedBook: any;
 
   constructor(private bookService: BookService, private router: Router) {
   }
@@ -22,5 +24,14 @@ export class BookListComponent implements OnInit {
 
   navigateToAddBook(): void {
     this.router.navigate(['/add-book']); // redirect to add book
+  }
+
+  openBookPreview(book: any) {
+    this.selectedBook = book;
+    this.isPreviewOpen = true;
+  }
+
+  closeBookPreview() {
+    this.isPreviewOpen = false;
   }
 }

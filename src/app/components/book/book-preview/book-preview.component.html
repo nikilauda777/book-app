@@ -1,0 +1,15 @@
+<div class="book-preview-overlay">
+  <div class="book-preview">
+    <h2>Book Preview</h2>
+    <p><strong>Name:</strong> {{book.name}}</p>
+    <p><strong>Price:</strong> {{ book.price | currency }}</p>
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Date:</strong> {{ book.date }}</p>
+    <p><strong>Genre:</strong> {{ book.genre }}</p>
+    <p><strong>Language:</strong> {{ book.language }}</p>
+    <p><strong>Description:</strong> {{ book.description }}</p>
+    <p><strong>Pages:</strong><strong>{{ book.pages }}</strong></p>
+    <button mat-raised-button color="black" (click)="closePreview()">Close Preview</button>
+  </div>
+</div>
+

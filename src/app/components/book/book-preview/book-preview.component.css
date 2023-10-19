@@ -1,0 +1,48 @@
+/* Overlay to cover the entire screen */
+.book-preview-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure the modal appears above other content */
+}
+
+/* Modal container */
+.book-preview {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 400px;
+  border-radius: 5px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.book-preview h2 {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+.book-preview p {
+  margin: 10px 0;
+}
+
+.book-preview button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.book-preview button:hover {
+  background-color: #555;
+}

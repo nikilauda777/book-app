@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BookService} from "../../../services/book.service";
 import {LanguageService} from "../../../services/language.service";
 import {AuthorService} from "../../../services/author.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-book-form',
@@ -16,7 +17,8 @@ export class BookFormComponent {
 
   constructor(private fb: FormBuilder, private bookService: BookService,
               private authorService: AuthorService,
-              private languageService: LanguageService) {
+              private languageService: LanguageService,
+              private router: Router) {
 
     this.bookForm = this.fb.group({
       name: ['', Validators.required],
@@ -40,12 +42,17 @@ export class BookFormComponent {
     });
   }
 
-
   onSubmit(): void {
     if (this.bookForm.valid) {
       const newBook = this.bookForm.value;
       this.bookService.addBook(newBook);
       this.bookForm.reset();
+      this.router.navigate(['/books']);
     }
   }
+  // private generateUniqueId(): number {
+  //   const timestamp = Date.now();
+  //   const randomValue = Math.floor(Math.random() * 10000); // Random number between 0 and 9999
+  //   return timestamp * 10000 + randomValue;
+  // }
 }

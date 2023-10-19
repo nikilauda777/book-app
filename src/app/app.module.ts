@@ -9,12 +9,15 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from "@angular/material/select";
 import {MatChipsModule} from "@angular/material/chips";
+import { BookPreviewComponent } from './components/book/book-preview/book-preview.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
     AppComponent,
     BookFormComponent,
-    BookListComponent
+    BookListComponent,
+    BookPreviewComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +26,7 @@ import {MatChipsModule} from "@angular/material/chips";
     AppRoutingModule,
     MatSelectModule,
     MatChipsModule,
+    MatDialogModule,
     BrowserAnimationsModule,
 
   ],
