@@ -1,5 +1,5 @@
-<div class="book-preview-overlay">
-  <div class="book-preview">
+<div class="book-preview-overlay" (click)="closePreview()">
+  <div class="book-preview" (click)="stopPropagation($event)">
     <h2>Book Preview</h2>
     <p><strong>Name:</strong> {{book.name}}</p>
     <p><strong>Price:</strong> {{ book.price | currency }}</p>

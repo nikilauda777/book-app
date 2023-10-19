@@ -1,5 +1,7 @@
 <div class="container">
   <h2>Book List</h2>
+  <input type="text" [(ngModel)]="filterText" placeholder="Search by book name" (input)="filterBooks()">
+
   <div *ngFor="let book of books" class="book-item" (click)="openBookPreview(book)">
     <p><strong>Name:</strong> {{ book.name }}</p>
     <p><strong>Price:</strong> {{ book.price | currency}}</p>

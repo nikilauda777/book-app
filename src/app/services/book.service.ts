@@ -51,4 +51,7 @@ export class BookService {
     this.booksSubject.next([...this.books]);
   }
 
+  filterBooks(searchText: string): Book[] {
+    return this.books.filter((book) => book.name.toLowerCase().includes(searchText.toLowerCase()));
+  }
 }

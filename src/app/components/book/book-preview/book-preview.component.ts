@@ -12,4 +12,10 @@ export class BookPreviewComponent {
   closePreview() {
     this.close.emit();
   }
+
+  stopPropagation(event: Event) {
+    // Prevent clicks within the modal from propagating to the overlay
+    event.stopPropagation();
+  }
+
 }

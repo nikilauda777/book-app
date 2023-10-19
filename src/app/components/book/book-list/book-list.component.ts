@@ -12,6 +12,7 @@ export class BookListComponent implements OnInit {
   books: Book[] = [];
   isPreviewOpen = false;
   selectedBook: any;
+  filterText: string = '';
 
   constructor(private bookService: BookService, private router: Router) {
   }
@@ -24,6 +25,10 @@ export class BookListComponent implements OnInit {
 
   navigateToAddBook(): void {
     this.router.navigate(['/add-book']); // redirect to add book
+  }
+
+  filterBooks(): void {
+    this.books = this.bookService.filterBooks(this.filterText);
   }
 
   openBookPreview(book: any) {
