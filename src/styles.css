@@ -1,4 +1,4 @@
-/* Global styles */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f4f4f4;
@@ -57,3 +57,6 @@ button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { BookFormComponent } from './components/book/book-form/book-form.component';
 import { BookListComponent } from './components/book/book-list/book-list.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from "@angular/material/select";
+import {MatChipsModule} from "@angular/material/chips";
 
 @NgModule({
   declarations: [
@@ -17,7 +20,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSelectModule,
+    MatChipsModule,
+    BrowserAnimationsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

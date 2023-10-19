@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BookService} from "../../../services/book.service";
+import {LanguageService} from "../../../services/language.service";
+import {AuthorService} from "../../../services/author.service";
 
 @Component({
   selector: 'app-book-form',
@@ -9,8 +11,13 @@ import {BookService} from "../../../services/book.service";
 })
 export class BookFormComponent {
   bookForm: FormGroup;
+  authors: string[] = [];
+  languages: string[] = [];
 
-  constructor(private fb: FormBuilder, private bookService: BookService) {
+  constructor(private fb: FormBuilder, private bookService: BookService,
+              private authorService: AuthorService,
+              private languageService: LanguageService) {
+
     this.bookForm = this.fb.group({
       name: ['', Validators.required],
       price: [0, [Validators.required, Validators.min(0)]],
@@ -20,6 +27,17 @@ export class BookFormComponent {
       language: ['', Validators.required],
     });
   }
+
+  ngOnInit(): void {
+    this.authorService.getAuthors().subscribe((authors) => {
+      this.authors = authors;
+    });
+
+    this.languageService.getLanguages().subscribe((languages) => {
+      this.languages = languages;
+    });
+  }
+
 
   onSubmit(): void {
     if (this.bookForm.valid) {

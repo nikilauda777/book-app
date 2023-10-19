@@ -10,8 +10,19 @@
       <input type="number" id="price" formControlName="price" required />
     </div>
     <div>
-      <label for="author">Author:</label>
-      <input type="text" id="author" formControlName="author" required />
+      <mat-form-field style="margin-right: 16px;">
+        <mat-label>Author:</mat-label>
+        <mat-select formControlName="author" multiple>
+          <mat-option *ngFor="let author of authors" [value]="author">{{ author }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Language:</mat-label>
+        <mat-select formControlName="language">
+          <mat-option *ngFor="let language of languages" [value]="language">{{ language }}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div>
       <label for="date">Date:</label>
@@ -20,10 +31,6 @@
     <div>
       <label for="genre">Genre:</label>
       <input type="text" id="genre" formControlName="genre" required />
-    </div>
-    <div>
-      <label for="language">Language:</label>
-      <input type="text" id="language" formControlName="language" required />
     </div>
     <button type="submit" [disabled]="bookForm.invalid">Add Book</button>
   </form>
