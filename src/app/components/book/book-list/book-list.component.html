@@ -48,19 +48,18 @@
     <button mat-raised-button color="warn" (click)="closeAuthorInputForm()">Cancel</button>
 
     <!-- Author editing -->
-    <div *ngFor="let author of authors" class="author-container" >
-      <p class="author-info">
-        <strong>Author:</strong>
-        <span class="author-name">{{ author }}</span>
-        <button mat-raised-button color="primary" class="edit-button" (click)="editAuthor(author)">Edit Author</button>
-      </p>
-      <div *ngIf="editingAuthor" class="author-input-form">
-      <textarea [(ngModel)]="editedAuthor"
-                placeholder="Edit author name">{{ editedAuthor }}</textarea>
-        <button mat-raised-button color="primary" (click)="saveAuthorEdit()">Save</button>
-        <button mat-raised-button color="warn" (click)="cancelAuthorEdit()">Cancel</button>
-      </div>
+    <div *ngFor="let author of authors; let i = index" class="author-container" >
+    <p class="author-info">
+      <strong>Author:</strong>
+      <span class="author-name">{{ author }}</span>
+      <button mat-raised-button color="primary" class="edit-button" (click)="editAuthor(i)">Edit Author</button>
+    </p>
+    <div *ngIf="editingAuthors[i]" class="author-input-form">
+      <textarea [(ngModel)]="editedAuthors[i]" placeholder="Edit author name">{{ editedAuthors[i] }}</textarea>
+      <button mat-raised-button color="primary" (click)="saveAuthorEdit(i)">Save</button>
+      <button mat-raised-button color="warn" (click)="cancelAuthorEdit(i)">Cancel</button>
     </div>
+  </div>
   </div>
 </div>
 <app-book-preview *ngIf="isPreviewOpen" [book]="selectedBook"

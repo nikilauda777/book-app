@@ -23,8 +23,12 @@ export class BookListComponent implements OnInit {
   newAuthor: string = '';
 
   editingAuthor = false;
-  editedAuthor = '';
-  selectedAuthor = '';
+  // editedAuthor = '';
+  // selectedAuthor = '';
+
+  editingAuthors: boolean[] = new Array(this.authors.length).fill(false);
+  editedAuthors: string[] = new Array(this.authors.length).fill('');
+
 
   //search parameters
   filterText: string = '';
@@ -90,20 +94,21 @@ export class BookListComponent implements OnInit {
     this.newAuthor = '';
   }
 
-  editAuthor(author: any) {
-    this.editingAuthor = true;
-    this.selectedAuthor = author;
+  editAuthor(index: number) {
+    this.editingAuthors[index] = true;
+    this.editedAuthors[index] = this.authors[index];
   }
 
-  saveAuthorEdit() {
-    if (this.editedAuthor.trim() !== '') {
-      this.authorService.updateAuthor(this.selectedAuthor, this.editedAuthor);
+  saveAuthorEdit(index: number) {
+    if (this.editedAuthors[index].trim() !== '') {
+      this.authorService.updateAuthor(this.authors[index], this.editedAuthors[index]);
     }
-    this.editingAuthor = false;
+    this.editingAuthors[index] = false;
+    this.editedAuthors[index] = ''; // Reset the textarea
   }
 
-  cancelAuthorEdit() {
-    this.editingAuthor = false;
+  cancelAuthorEdit(index: number) {
+    this.editingAuthors[index] = false;
   }
 
 
