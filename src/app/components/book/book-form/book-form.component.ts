@@ -50,9 +50,4 @@ export class BookFormComponent {
       this.router.navigate(['/books']);
     }
   }
-  // private generateUniqueId(): number {
-  //   const timestamp = Date.now();
-  //   const randomValue = Math.floor(Math.random() * 10000); // Random number between 0 and 9999
-  //   return timestamp * 10000 + randomValue;
-  // }
 }

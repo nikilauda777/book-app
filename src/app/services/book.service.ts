@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Book} from "../model/book.model";
 
 @Injectable({
@@ -52,7 +52,15 @@ export class BookService {
     this.booksSubject.next([...this.books]);
   }
 
-  filterBooks(searchText: string): Book[] {
-    return this.books.filter((book) => book.name.toLowerCase().includes(searchText.toLowerCase()));
+
+  filterBooks(filters: any): Book[] {
+    return this.books.filter((book) => {
+      const nameMatch = book.name.toLowerCase().includes(filters.name.toLowerCase());
+      const authorMatch = filters.authors.length === 0 || filters.authors.includes(book.author);
+      const languageMatch = filters.languages.length === 0 || filters.languages.includes(book.language);
+      const minPagesMatch = filters.minPages === null || book.pages >= filters.minPages;
+      const maxPagesMatch = filters.maxPages === null || book.pages <= filters.maxPages;
+      return nameMatch && authorMatch && languageMatch && minPagesMatch && maxPagesMatch;
+    });
   }
 }

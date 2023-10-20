@@ -1,6 +1,27 @@
 <div class="container">
   <h2>Book List</h2>
-  <input type="text" [(ngModel)]="filterText" placeholder="Search by book name" (input)="filterBooks()">
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="filterText" placeholder="Search by book name"
+           (input)="filterBooks()">
+  </div>
+  <div class="filter-options">
+    <!--Multiselect -->
+    <select [(ngModel)]="selectedAuthors" (change)="filterBooks()">
+      <option value="">Filter by Authors</option>
+      <option *ngFor="let author of authors" [value]="author">{{ author }}</option>
+    </select>
+    <!--Multiselect -->
+    <select [(ngModel)]="selectedLanguages" (change)="filterBooks()">
+      <option value="">Filter by Languages</option>
+      <option *ngFor="let language of languages" [value]="language">{{ language }}</option>
+    </select>
+    <!--     Wrap the "Min Pages" and "Max Pages" inputs in a div to keep them in the same row -->
+    <div class="page-filter">
+      <input type="number" [(ngModel)]="minPages" placeholder="Min Pages" (input)="filterBooks()">
+      <input type="number" [(ngModel)]="maxPages" placeholder="Max Pages" (input)="filterBooks()">
+    </div>
+  </div>
+
   <div *ngFor="let book of books" class="book-item" (click)="openBookPreview(book)">
     <p><strong>Name:</strong> {{ book.name }}</p>
     <p><strong>Price:</strong> {{ book.price | currency}}</p>
@@ -21,4 +42,5 @@
     <button mat-raised-button color="warn" (click)="closeAuthorInputForm()">Cancel</button>
   </div>
 </div>
-<app-book-preview *ngIf="isPreviewOpen" [book]="selectedBook" (close)="closeBookPreview()"></app-book-preview>
+<app-book-preview *ngIf="isPreviewOpen" [book]="selectedBook"
+                  (close)="closeBookPreview()"></app-book-preview>
