@@ -27,7 +27,7 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatSelectModule,
     MatChipsModule,
     MatDialogModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
 
   ],
   providers: [],

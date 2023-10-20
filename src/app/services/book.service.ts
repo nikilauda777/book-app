@@ -30,7 +30,7 @@ export class BookService {
         price: 19.99,
         author: 'Гоголь',
         date: '2023-10-20',
-        genre: 'Fiction',
+        genre: 'Roman',
         language: 'Russian',
         description: 'Классная Книга',
         pages: 222
@@ -40,7 +40,7 @@ export class BookService {
         price: 29.99,
         author: 'Гоголь',
         date: '2023-10-21',
-        genre: 'Science Fiction',
+        genre: 'Roman',
         language: 'Russian',
         description: 'Cупер Книга',
         pages: 223

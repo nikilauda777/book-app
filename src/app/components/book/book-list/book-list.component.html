@@ -5,27 +5,35 @@
            (input)="filterBooks()">
   </div>
   <div class="filter-options">
-    <!--TODO Multiselect -->
-    <select [(ngModel)]="selectedAuthors" (change)="filterBooks()">
-      <option value="">Filter by Authors</option>
-      <option *ngFor="let author of authors" [value]="author">{{ author }}</option>
-    </select>
-    <!--TODO Multiselect -->
-    <select [(ngModel)]="selectedLanguages" (change)="filterBooks()">
-      <option value="">Filter by Languages</option>
-      <option *ngFor="let language of languages" [value]="language">{{ language }}</option>
-    </select>
-    <!--     Wrap the "Min Pages" and "Max Pages" inputs in a div to keep them in the same row -->
+    <!--MultiSelect -->
+    <mat-form-field>
+      <mat-label>Filter by Authors</mat-label>
+      <mat-select [(ngModel)]="selectedAuthors" (selectionChange)="filterBooks()" multiple>
+        <mat-option *ngFor="let author of authors" [value]="author">{{ author }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!--MultiSelect -->
+    <mat-form-field>
+      <mat-label>Filter by by Languages</mat-label>
+      <mat-select [(ngModel)]="selectedLanguages" (selectionChange)="filterBooks()" multiple>
+        <mat-option *ngFor="let language of languages"
+                    [value]="language">{{ language }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!--Select -->
+    <mat-form-field>
+      <mat-label>Filter by Genre</mat-label>
+      <mat-select [(ngModel)]="selectedGenres" (selectionChange)="filterBooks()">
+        <mat-option [value]="">None</mat-option>
+        <mat-option *ngFor="let genre of genres" [value]="genre">{{ genre }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- Wrap the "Min Pages" and "Max Pages" inputs in a div to keep them in the same row -->
     <div class="page-filter">
       <input type="number" [(ngModel)]="minPages" placeholder="Min Pages" (input)="filterBooks()">
       <input type="number" [(ngModel)]="maxPages" placeholder="Max Pages" (input)="filterBooks()">
     </div>
 
-    <!--Select-->
-    <select [(ngModel)]="selectedGenres" (change)="filterBooks()">
-      <option value="">Filter by Genre</option>
-      <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
-    </select>
   </div>
 
   <div *ngFor="let book of books" class="book-item" (click)="openBookPreview(book)">
@@ -36,30 +44,32 @@
     <p><strong>Genre:</strong> {{ book.genre }}</p>
     <p><strong>Language:</strong> {{ book.language }}</p>
   </div>
-
   <button mat-raised-button color="black" (click)="navigateToAddBook()">Add Book</button>
   <!-- Add a button to open the author input form -->
   <button mat-raised-button color="primary" (click)="openAuthorInputForm()">Add Author</button>
-
   <!-- Author input form (displayed conditionally) -->
   <div *ngIf="addingAuthor" class="author-input-form">
     <textarea [(ngModel)]="newAuthor" placeholder="Enter author name"></textarea>
     <button mat-raised-button color="primary" (click)="addAuthor()">Submit</button>
     <button mat-raised-button color="warn" (click)="closeAuthorInputForm()">Cancel</button>
 
+
     <!-- Author editing -->
-    <div *ngFor="let author of authors; let i = index" class="author-container" >
-    <p class="author-info">
-      <strong>Author:</strong>
-      <span class="author-name">{{ author }}</span>
-      <button mat-raised-button color="primary" class="edit-button" (click)="editAuthor(i)">Edit Author</button>
-    </p>
-    <div *ngIf="editingAuthors[i]" class="author-input-form">
-      <textarea [(ngModel)]="editedAuthors[i]" placeholder="Edit author name">{{ editedAuthors[i] }}</textarea>
-      <button mat-raised-button color="primary" (click)="saveAuthorEdit(i)">Save</button>
-      <button mat-raised-button color="warn" (click)="cancelAuthorEdit(i)">Cancel</button>
+    <div *ngFor="let author of authors; let i = index" class="author-container">
+      <p class="author-info">
+        <strong>Author:</strong>
+        <span class="author-name">{{ author }}</span>
+        <button mat-raised-button color="primary" class="edit-button" (click)="editAuthor(i)">Edit
+          Author
+        </button>
+      </p>
+      <div *ngIf="editingAuthors[i]" class="author-input-form">
+        <textarea [(ngModel)]="editedAuthors[i]"
+                  placeholder="Edit author name">{{ editedAuthors[i] }}</textarea>
+        <button mat-raised-button color="primary" (click)="saveAuthorEdit(i)">Save</button>
+        <button mat-raised-button color="warn" (click)="cancelAuthorEdit(i)">Cancel</button>
+      </div>
     </div>
-  </div>
   </div>
 </div>
 <app-book-preview *ngIf="isPreviewOpen" [book]="selectedBook"
