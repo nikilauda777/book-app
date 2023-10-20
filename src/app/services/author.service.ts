@@ -15,4 +15,13 @@ export class AuthorService {
     this.authors.push(newAuthor);
     this.authorsSubject.next([...this.authors]);
   }
+
+  updateAuthor(oldAuthor: string, newAuthor: string): void {
+    const authorIndex = this.authors.indexOf(oldAuthor);
+    if (authorIndex !== -1) {
+      this.authors[authorIndex] = newAuthor;
+      this.authorsSubject.next([...this.authors]);
+    }
+  }
+
 }

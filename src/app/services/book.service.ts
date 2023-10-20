@@ -28,7 +28,7 @@ export class BookService {
       {
         name: 'Book 1',
         price: 19.99,
-        author: 'Author A',
+        author: 'Гоголь',
         date: '2023-10-20',
         genre: 'Fiction',
         language: 'Russian',
@@ -38,7 +38,7 @@ export class BookService {
       {
         name: 'Book 2',
         price: 29.99,
-        author: 'Author B',
+        author: 'Гоголь',
         date: '2023-10-21',
         genre: 'Science Fiction',
         language: 'Russian',
@@ -61,8 +61,10 @@ export class BookService {
       const minPagesMatch = filters.minPages === null || book.pages >= filters.minPages;
       const maxPagesMatch = filters.maxPages === null || book.pages <= filters.maxPages;
       const genreMatch = filters.genres.length === 0 || filters.genres.includes(book.genre);
-      return nameMatch && authorMatch && languageMatch && minPagesMatch && maxPagesMatch && genreMatch;
+      const descriptionMatch = book.description.toLowerCase().includes(filters.description.toLowerCase());
+      return (nameMatch || descriptionMatch) && authorMatch && languageMatch && minPagesMatch && maxPagesMatch && genreMatch;
     });
   }
+
 
 }

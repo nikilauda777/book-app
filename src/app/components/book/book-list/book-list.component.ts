@@ -22,6 +22,10 @@ export class BookListComponent implements OnInit {
   addingAuthor: boolean = false; // for form visibillity
   newAuthor: string = '';
 
+  editingAuthor = false;
+  editedAuthor = '';
+  selectedAuthor = '';
+
   //search parameters
   filterText: string = '';
   selectedAuthors: string[] = [];
@@ -66,10 +70,11 @@ export class BookListComponent implements OnInit {
       minPages: this.minPages,
       maxPages: this.maxPages,
       genres: this.selectedGenres,
+      description: this.filterText,
     });
   }
 
-  //add author
+  //author logic
   openAuthorInputForm() {
     this.addingAuthor = true;
   }
@@ -85,11 +90,29 @@ export class BookListComponent implements OnInit {
     this.newAuthor = '';
   }
 
+  editAuthor(author: any) {
+    this.editingAuthor = true;
+    this.selectedAuthor = author;
+  }
+
+  saveAuthorEdit() {
+    if (this.editedAuthor.trim() !== '') {
+      this.authorService.updateAuthor(this.selectedAuthor, this.editedAuthor);
+    }
+    this.editingAuthor = false;
+  }
+
+  cancelAuthorEdit() {
+    this.editingAuthor = false;
+  }
+
+
   //preview of book
   openBookPreview(book: any) {
     this.selectedBook = book;
     this.isPreviewOpen = true;
   }
+
   closeBookPreview() {
     this.isPreviewOpen = false;
   }

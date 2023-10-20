@@ -58,3 +58,26 @@ button {
   margin-top: 10px;
   margin-right: 10px;
 }
+
+.author-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.author-info {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.author-name {
+  flex-grow: 1;
+}
+
+.edit-button {
+  min-width: 100px;
+}
