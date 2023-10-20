@@ -5,12 +5,12 @@
            (input)="filterBooks()">
   </div>
   <div class="filter-options">
-    <!--Multiselect -->
+    <!--TODO Multiselect -->
     <select [(ngModel)]="selectedAuthors" (change)="filterBooks()">
       <option value="">Filter by Authors</option>
       <option *ngFor="let author of authors" [value]="author">{{ author }}</option>
     </select>
-    <!--Multiselect -->
+    <!--TODO Multiselect -->
     <select [(ngModel)]="selectedLanguages" (change)="filterBooks()">
       <option value="">Filter by Languages</option>
       <option *ngFor="let language of languages" [value]="language">{{ language }}</option>

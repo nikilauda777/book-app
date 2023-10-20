@@ -37,4 +37,24 @@
 
 button {
   margin-top: 10px;
+  margin-right: 10px;
+}
+
+/*author button*/
+.author-input-form {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+.author-input-form textarea {
+  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.author-input-form button {
+  margin-top: 10px;
+  margin-right: 10px;
 }
