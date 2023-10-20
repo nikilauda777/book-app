@@ -38,7 +38,7 @@
     </div>
     <div>
       <label for="genre">Genre:</label>
-      <input type="text" id="genre" formControlName="genre" required />
+      <input type="text" [(ngModel)]="newGenres" id="genre" formControlName="genre" required />
     </div>
     <button type="submit" [disabled]="bookForm.invalid" >Add Book</button>
   </form>

@@ -15,15 +15,18 @@ export class BookListComponent implements OnInit {
   books: Book[] = [];
   authors: string[] = [];
   languages: string[] = [];
+  genres: string[] = [];
 
   isPreviewOpen = false;
   selectedBook: any;
   addingAuthor: boolean = false; // for form visibillity
   newAuthor: string = '';
+
   //search parameters
   filterText: string = '';
   selectedAuthors: string[] = [];
   selectedLanguages: string[] = [];
+  selectedGenres: string[] = [];
 
   minPages: number | null = null;
   maxPages: number | null = null;
@@ -45,6 +48,9 @@ export class BookListComponent implements OnInit {
     this.languageService.getLanguages().subscribe((languages) => {
       this.languages = languages;
     });
+    this.languageService.getGenres().subscribe((genres) => {
+      this.genres = genres;
+    });
   }
 
   navigateToAddBook(): void {
@@ -59,6 +65,7 @@ export class BookListComponent implements OnInit {
       languages: this.selectedLanguages,
       minPages: this.minPages,
       maxPages: this.maxPages,
+      genres: this.selectedGenres,
     });
   }
 

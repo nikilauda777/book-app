@@ -14,6 +14,7 @@ export class BookFormComponent {
   bookForm: FormGroup;
   authors: string[] = [];
   languages: string[] = [];
+  newGenres: string = '';
 
   constructor(private fb: FormBuilder, private bookService: BookService,
               private authorService: AuthorService,
@@ -42,8 +43,13 @@ export class BookFormComponent {
     });
   }
 
+  addGenres() {
+    this.languageService.addGenres(this.newGenres)
+  }
+
   onSubmit(): void {
     if (this.bookForm.valid) {
+      this.addGenres();
       const newBook = this.bookForm.value;
       this.bookService.addBook(newBook);
       this.bookForm.reset();

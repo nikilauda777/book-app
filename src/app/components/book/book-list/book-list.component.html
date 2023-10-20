@@ -20,6 +20,12 @@
       <input type="number" [(ngModel)]="minPages" placeholder="Min Pages" (input)="filterBooks()">
       <input type="number" [(ngModel)]="maxPages" placeholder="Max Pages" (input)="filterBooks()">
     </div>
+
+    <!--Select-->
+    <select [(ngModel)]="selectedGenres" (change)="filterBooks()">
+      <option value="">Filter by Genre</option>
+      <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+    </select>
   </div>
 
   <div *ngFor="let book of books" class="book-item" (click)="openBookPreview(book)">

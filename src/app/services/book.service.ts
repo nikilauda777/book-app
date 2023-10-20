@@ -60,7 +60,9 @@ export class BookService {
       const languageMatch = filters.languages.length === 0 || filters.languages.includes(book.language);
       const minPagesMatch = filters.minPages === null || book.pages >= filters.minPages;
       const maxPagesMatch = filters.maxPages === null || book.pages <= filters.maxPages;
-      return nameMatch && authorMatch && languageMatch && minPagesMatch && maxPagesMatch;
+      const genreMatch = filters.genres.length === 0 || filters.genres.includes(book.genre);
+      return nameMatch && authorMatch && languageMatch && minPagesMatch && maxPagesMatch && genreMatch;
     });
   }
+
 }
