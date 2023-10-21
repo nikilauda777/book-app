@@ -33,7 +33,6 @@
       <input type="number" [(ngModel)]="minPages" placeholder="Min Pages" (input)="filterBooks()">
       <input type="number" [(ngModel)]="maxPages" placeholder="Max Pages" (input)="filterBooks()">
     </div>
-
   </div>
 
   <div *ngFor="let book of books" class="book-item" (click)="openBookPreview(book)">

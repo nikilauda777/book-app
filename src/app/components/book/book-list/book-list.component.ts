@@ -22,23 +22,18 @@ export class BookListComponent implements OnInit {
   addingAuthor: boolean = false; // for form visibillity
   newAuthor: string = '';
 
+  //editing parameters
   editingAuthor = false;
-  // editedAuthor = '';
-  // selectedAuthor = '';
-
   editingAuthors: boolean[] = new Array(this.authors.length).fill(false);
   editedAuthors: string[] = new Array(this.authors.length).fill('');
-
 
   //search parameters
   filterText: string = '';
   selectedAuthors: string[] = [];
   selectedLanguages: string[] = [];
-  selectedGenres: string[] = [];
-
+  selectedGenres: string = '';
   minPages: number | null = null;
   maxPages: number | null = null;
-  selectedGenre: string = '';
 
   constructor(private bookService: BookService,
               private router: Router,

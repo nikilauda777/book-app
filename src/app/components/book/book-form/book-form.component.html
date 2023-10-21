@@ -20,7 +20,7 @@
     <div>
       <mat-form-field style="margin-right: 16px;">
         <mat-label>Author:</mat-label>
-        <mat-select formControlName="author" multiple>
+        <mat-select formControlName="author">
           <mat-option *ngFor="let author of authors" [value]="author">{{ author }}</mat-option>
         </mat-select>
       </mat-form-field>
